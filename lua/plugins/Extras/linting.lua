@@ -1,0 +1,54 @@
+return {
+-- 	{
+-- 		"mfussenegger/nvim-lint",
+-- 		event = "VeryLazy",
+-- 		opts = {
+-- 			-- Event to trigger linters
+-- 			events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+-- 			linters_by_ft = {
+-- 				c = { "clangd"},
+-- 				java = { "jdkls"},
+-- 				_ = { "codespell" }, 
+-- 			},
+-- 			linters = {
+-- 				-- -- Example of using selene only when a selene.toml file is present
+-- 				-- selene = {
+-- 					--   -- `condition` is another LazyVim extension that allows you to
+-- 					--   -- dynamically enable/disable linters based on the context.
+-- 					--   condition = function(ctx)
+-- 						--     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
+-- 						--   end,
+-- 						-- },
+-- 			}
+-- 		},
+-- 		config = function(_, opts)
+-- 			local M = {}
+-- 			local lint = require("lint")
+-- 			lint.linters.clangd = {
+-- 				cmd = 'clangd',
+-- 				stdin = true,  -- 使用 stdin 作为输入
+-- 				args = {},     -- 可以添加额外的参数
+-- 				stream = 'stdout',
+-- 				ignore_exitcode = false,
+-- 				parser = require('lint.parser').from_errorformat('%f:%l:%c: %m'),
+-- 			}
+-- 			lint.linters_by_ft = opts.linters_by_ft
+--
+-- 			function M.debounce(ms, fn)
+-- 				local timer = vim.uv.new_timer()
+-- 				return function(...)
+-- 					local argv = { ... }
+-- 					timer:start(ms, 0, function()
+-- 						timer:stop()
+-- 						vim.schedule_wrap(fn)(unpack(argv))
+-- 					end)
+-- 				end
+-- 			end
+-- 			vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave" }, {
+-- 				callback = function()
+-- 					lint.try_lint() -- 尝试运行 linting
+-- 				end,
+-- 			})
+-- 		end,
+-- 	}
+}

@@ -1,0 +1,23 @@
+return {
+	-- 作用：为neovim添加了新的文本对象
+	-- { 
+	-- 	'echasnovski/mini.ai',
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	version = '*' ,
+	-- 	event = {"BufRead","InsertEnter"},
+	--
+	-- 	config = function()
+	-- 		local spec_treesitter = require('mini.ai').gen_spec.treesitter
+	-- 		require("mini.ai").setup()
+	-- 		custom_textobjects = {
+	-- 			F = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
+	-- 			o = spec_treesitter({
+	-- 				a = { '@conditional.outer', '@loop.outer' },
+	-- 				i = { '@conditional.inner', '@loop.inner' },
+	-- 			})
+	-- 		}
+	-- 	end,
+	-- }
+}

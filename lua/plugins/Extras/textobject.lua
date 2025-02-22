@@ -1,0 +1,38 @@
+return {
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter-textobjects",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	event = {"BufRead","InsertEnter"},
+	--
+	-- 	-- kjsdkfa
+	-- 	config = function()
+	-- 		require'nvim-treesitter.configs'.setup {
+	-- 			textobjects = {
+	-- 				select = {
+	-- 					enable = true,
+	-- 					-- lookahead = true,
+	-- 					keymaps = {
+	-- 						["ab"] = "@block.outer",
+	-- 						["ib"] = "@block.inner",
+	-- 						["af"] = "@function.outer",
+	-- 						["if"] = "@function.inner",
+	-- 						["ac"] = "@class.outer",
+	-- 						["ic"] = "@class.inner",
+	-- 						["ag"] = "@comment.outer",
+	-- 						["ig"] = "@comment.inner",
+	-- 						["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+	-- 					},
+	-- 					selection_modes = {
+	-- 						-- ['@parameter.outer'] = 'v', -- charwise
+	-- 						-- ['@function.outer'] = 'v', -- linewise
+	-- 						-- ['@class.outer'] = '<c-v>', -- blockwise
+	-- 					},
+	-- 					include_surrounding_whitespace = false,
+	-- 				},
+	-- 			},
+	-- 		}
+	-- 	end,
+	-- }
+}
