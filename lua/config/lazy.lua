@@ -27,8 +27,8 @@ require("lazy").setup({
 	-- 制定要加载的插件模块
 	spec = {
 		{ import = 	"plugins.Ui"},
-		{ import = 	"plugins.Snacks"},
 		{ import = 	"plugins.Treesitter"},
+		{ import = 	"plugins.Snacks"},
 		{ import = 	"plugins.Markdown"},
 		{ import = 	"plugins.Blink"},
 		{ import = 	"plugins.Dap"},
