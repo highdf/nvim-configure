@@ -8,6 +8,14 @@ return {
 		lazy = false,
 
 		opts = {
+			bigfile = { 	-- 提高neovim渲染文件的速度
+				enabled = true,
+				-- dashboard = { example = "github" }
+			},
+			quickfile = { 	-- 
+				enabled = true,
+				-- dashboard = { example = "github" }
+			},
 			input = {
 				enabled = true,
 			},
@@ -93,11 +101,3 @@ return {
 			-- },
 			-- -- scope
 			-- {"<leader>sj",mode = {"n","v"},function() Snacks.scope.textobject() end,desc = "open lazygit"},
-			-- bigfile = { 	-- 提高neovim渲染文件的速度
-			-- 	enabled = true,
-			-- 	-- dashboard = { example = "github" }
-			-- },
-			-- quickfile = { 	-- 
-			-- 	enabled = true,
-			-- 	-- dashboard = { example = "github" }
-			-- },

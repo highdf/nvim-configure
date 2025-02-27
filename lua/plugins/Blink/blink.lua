@@ -4,7 +4,6 @@ return {
 	{
 		'saghen/blink.cmp',
 		dependencies =  {			-- 指定依赖插件，它们会在blink.cmp加载之前被加载
-			"folke/snacks.nvim",
 			'rafamadriz/friendly-snippets',
 			'echasnovski/mini.icons', version = '*',
 		},

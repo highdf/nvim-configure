@@ -5,6 +5,7 @@ return {
 	{
 		"mikavilpas/yazi.nvim",
 		verson = false,
+		lazy = true,
 
 		keys = {
 			{

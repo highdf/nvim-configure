@@ -55,7 +55,6 @@
 
 ### Markdown
 - `rendermarkdown`用于实时预览`Markdown`文件。  
-- `markdown`提供一些关于`markdown`文本的快捷操作。  
 - `markdown-toc`提供了插入，更新，删除目录的快捷操作。  
 
 ### Snacks

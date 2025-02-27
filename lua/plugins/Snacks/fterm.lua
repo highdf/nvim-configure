@@ -2,6 +2,7 @@ return  {
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
+		lazy = true;
 
 		keys = {
 			{
@@ -9,6 +10,12 @@ return  {
 				mode = "n",
 				"<cmd>ToggleTerm name=float<cr>",
 				desc = "open float term",
+			},
+			{
+				"<C-w>",
+				mode = "t",
+				"exit<cr>",
+				desc = "close terminal",
 			},
 			{
 				"<c-[>",

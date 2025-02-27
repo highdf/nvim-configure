@@ -4,7 +4,7 @@
 local hour = tonumber(vim.fn.strftime("%H"))
 
 -- tokyonight
--- if hour >= 6 and hour < 18 then
+-- if hour >= 6 and hour < 17 then
 -- 	vim.cmd([[colorscheme tokyonight-day]])		-- light主题
 -- 	options = { theme = 'tokyonight-day' }
 -- else
@@ -13,7 +13,7 @@ local hour = tonumber(vim.fn.strftime("%H"))
 -- end
 
 -- catppuccin
-if hour >= 6 and hour < 18 then
+if hour >= 6 and hour < 17 then
 	vim.cmd([[colorscheme catppuccin-latte]])	-- light主题
 	options = { theme = 'catppuccin-latte' }
 else

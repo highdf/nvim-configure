@@ -90,6 +90,8 @@ map('n','<leader>cc','<cmd>cclose<enter>',opt)		-- 关闭QiuckFix
 map('n','<leader>bn','<cmd>bn<cr>',opt)						-- 下一个Buffer
 map('n','<leader>bp','<cmd>bp<cr>',opt)						-- 上一个Buffer
 map('n','<leader>bl','<cmd>ls<cr>',opt)						-- 显示Buffer列表
+map('n','<leader>bf','<cmd>bf<cr>',opt)						-- 跳到第一个缓冲区
+map('n','<leader>be','<cmd>bl<cr>',opt)						-- 跳到最后一个缓冲区
 
 ------------------------------------
 -- 在可视模式下复制/粘贴系统剪切板
