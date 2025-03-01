@@ -3,8 +3,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = "VeryLazy",
-		-- event = "VimEnter",
+		event = { "UIEnter" },
 
 		config = function() 
 			require'nvim-treesitter.configs'.setup {

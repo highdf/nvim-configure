@@ -12,9 +12,9 @@ return  {
 				desc = "open float term",
 			},
 			{
-				"<C-w>",
+				"<A-w>",
 				mode = "t",
-				"exit<cr>",
+				"<C-u>exit<cr>",
 				desc = "close terminal",
 			},
 			{

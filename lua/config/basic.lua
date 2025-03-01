@@ -9,7 +9,6 @@ vim.opt.fileencoding = "utf-8"
 ------------------------------------
 -- 基础设置
 ------------------------------------
-vim.loader.enable()					-- 启用内置的模块加载，提高速度
 vim.o.hlsearch = false				-- 取消当前搜索高亮
 vim.o.scrolloff = 2					-- jk移动时光标下上方保留4行
 vim.o.sidescrolloff = 2				-- jk移动时光标下下方保留4行
@@ -28,3 +27,4 @@ vim.opt.smartindent = false			-- 开启智能缩进
 -- vim.cmd("syntax on")					-- 打开语法高亮
 -- vim.opt.wrap = false				-- 取消屏幕行折叠
 -- vim.opt.termencoding = "utf-8"
+-- vim.loader.enable()					-- 启用内置的模块加载，提高速度
