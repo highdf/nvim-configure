@@ -4,22 +4,22 @@
 local hour = tonumber(vim.fn.strftime("%H"))
 
 -- tokyonight
--- if hour >= 6 and hour < 17 then
--- 	vim.cmd([[colorscheme tokyonight-day]])		-- light主题
--- 	options = { theme = 'tokyonight-day' }
--- else
--- 	vim.cmd([[colorscheme tokyonight-moon]])	-- dark主题
--- 	options = { theme = 'tokyonight-moon' }
--- end
+if hour >= 6 and hour < 17 then
+	vim.cmd([[colorscheme tokyonight-day]])		-- light主题
+	options = { theme = 'tokyonight-day' }
+else
+	vim.cmd([[colorscheme tokyonight-moon]])	-- dark主题
+	options = { theme = 'tokyonight-moon' }
+end
 
 -- catppuccin
-if hour >= 6 and hour < 17 then
-	vim.cmd([[colorscheme catppuccin-latte]])	-- light主题
-	options = { theme = 'catppuccin-latte' }
-else
-	vim.cmd([[colorscheme catppuccin-mocha]])	-- dark主题
-	options = { theme = 'catppuccin-mocha' }
-end
+-- if hour >= 6 and hour < 17 then
+-- 	vim.cmd([[colorscheme catppuccin-latte]])	-- light主题
+-- 	options = { theme = 'catppuccin-latte' }
+-- else
+-- 	vim.cmd([[colorscheme catppuccin-mocha]])	-- dark主题
+-- 	options = { theme = 'catppuccin-mocha' }
+-- end
 
 -- 检查启动参数是否为目录
 local function change_to_directory_if_provided()

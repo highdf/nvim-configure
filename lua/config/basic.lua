@@ -19,8 +19,9 @@ vim.opt.tabstop = 4					-- 表示一个 Tab 显示出来的长度相当于 4 个
 vim.opt.shiftwidth = 4				-- 自动缩进插入删除时所使用的空格数量
 vim.opt.expandtab = false			-- 不展开 Tab 成为空格
 vim.opt.mouse = ""					-- 移除所有类型的鼠标支持
-vim.opt.autoindent = false			-- 开启自动缩进
-vim.opt.smartindent = false			-- 开启智能缩进
+vim.opt.autoindent = false			-- 关闭自动缩进
+vim.opt.smartindent = false			-- 关闭智能缩进
+vim.opt.cindent = false       		-- 禁用 C 语言风格缩进
 
 -- vim.opt.mouse = "n"					-- 如果只是想保留某种模式下的鼠标支持，如普通模式
 -- vim.opt.softtabstop = 4				-- 输入 <TAB> 键时实际插入的空格数目
@@ -28,3 +29,4 @@ vim.opt.smartindent = false			-- 开启智能缩进
 -- vim.opt.wrap = false				-- 取消屏幕行折叠
 -- vim.opt.termencoding = "utf-8"
 -- vim.loader.enable()					-- 启用内置的模块加载，提高速度
+-- vim.cmd[[filetype indent off]] 		-- 关闭文件类型相关的缩进规则

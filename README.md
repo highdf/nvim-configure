@@ -54,7 +54,7 @@
 - `dap-ui`和`dap-text` 分别用于窗口美化与虚拟文本显示。  
 
 ### Markdown
-- `rendermarkdown`用于实时预览`Markdown`文件。  
+- `preview-markdwon`用于实时预览`Markdown`文件。  
 - `markdown-toc`提供了插入，更新，删除目录的快捷操作。  
 
 ### Snacks

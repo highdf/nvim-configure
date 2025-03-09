@@ -30,6 +30,9 @@ return {
 						node_decremental = "<bs>"      -- 节点递减选择
 					}
 				},
+				indent = {
+					enable = true,
+				}
 			}
 		end,
 	}

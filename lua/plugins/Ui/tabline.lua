@@ -16,7 +16,7 @@ return {
 					show_devicons = true, -- 显示图标
 					show_bufnr = false, -- 禁止显示编号
 					show_filename_only = true, -- 不显示相对路径
-					modified_icon = "!! ",
+					modified_icon = "+ ",
 					modified_italic = true, -- set to true by default; this determines whether the filename turns italic if modified
 					show_tabs_only = false,
 				}
@@ -26,6 +26,6 @@ return {
 			set sessionoptions+=tabpages,globals " store tabpages and globals in session
 			]]
 		end,
+		requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
 	}
 }
-		-- requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
