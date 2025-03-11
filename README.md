@@ -3,7 +3,7 @@
 ![empty][neovim-0]
 ![empty][neovim-1]
 
-<!-- mtoc-start -->
+<!-- vim-markdown-toc GFM -->
 
 * [准备](#准备)
 * [目录结构](#目录结构)
@@ -11,15 +11,15 @@
 * [lua](#lua)
 * [config](#config)
 * [plugins](#plugins)
-  * [Blink](#blink)
-  * [Dap](#dap)
-  * [Markdown](#markdown)
-  * [Snacks](#snacks)
-  * [Treesitter](#treesitter)
-  * [Ui](#ui)
-  * [Extras](#extras)
+    * [Blink](#blink)
+    * [Dap](#dap)
+    * [Markdown](#markdown)
+    * [Snacks](#snacks)
+    * [Treesitter](#treesitter)
+    * [Ui](#ui)
+    * [Extras](#extras)
 
-<!-- mtoc-end -->
+<!-- vim-markdown-toc -->
 
 ## 准备
 - [neovim下载地址](https://github.com/neovim/neovim/releases/tag/nightly)  
