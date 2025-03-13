@@ -29,6 +29,9 @@ return {
 				enabled = false,			-- 关闭命令行补全
 			},		
 
+			fuzzy = {
+				implementation = "prefer_rust_with_warning",
+			},
 			completion = {
 				accept = {
 					-- 在接受补全后，不自动追加括号
