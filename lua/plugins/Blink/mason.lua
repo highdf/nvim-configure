@@ -7,7 +7,8 @@ return  {
 		keys = { { "<leader>ms", "<cmd>Mason<cr>", desc = "Mason" } },
 
 		config = function() 
-			require('mason').setup()
+			require("mason").setup({
+			})
 		end,
 	},
 
