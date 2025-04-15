@@ -22,6 +22,7 @@ vim.opt.mouse = ""					-- 移除所有类型的鼠标支持
 vim.opt.autoindent = false			-- 关闭自动缩进
 vim.opt.smartindent = false			-- 关闭智能缩进
 vim.opt.cindent = false       		-- 禁用 C 语言风格缩进
+vim.o.termguicolors = true
 
 -- vim.opt.mouse = "n"					-- 如果只是想保留某种模式下的鼠标支持，如普通模式
 -- vim.opt.softtabstop = 4				-- 输入 <TAB> 键时实际插入的空格数目
