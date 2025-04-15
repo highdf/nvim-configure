@@ -21,6 +21,7 @@
 │       ├── Extras
 │       │   ├── compat.lua
 │       │   ├── flash.lua
+│       │   ├── im-select.lua
 │       │   ├── linting.lua
 │       │   ├── mini-ai.lua
 │       │   ├── mini-surround.lua
@@ -33,8 +34,8 @@
 │       ├── README.md
 │       ├── Snacks
 │       │   ├── comment.lua
+│       │   ├── fcitx.lua
 │       │   ├── fterm.lua
-│       │   ├── im-select.lua
 │       │   ├── scacks.lua
 │       │   ├── surroud.lua
 │       │   └── yazi.lua
@@ -46,6 +47,6 @@
 │           ├── noice.lua
 │           └── tabline.lua
 └── README.md
-
-12 directories, 35 files
 ```
+
+12 directories, 36 files

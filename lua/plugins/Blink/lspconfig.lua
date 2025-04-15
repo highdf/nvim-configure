@@ -5,8 +5,7 @@ return {
 	 	'neovim/nvim-lspconfig',
 		dependencies = { 
 			'saghen/blink.cmp',
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		},
 		event = "InsertEnter",
 
@@ -47,7 +46,22 @@ return {
 					},
 					settings = {},
 
-				}
+				},
+				pylsp = {
+					cmd = {"pylsp"}, 
+					filetypes = {"python"},
+					init_options = {
+						usePlaceholders = true,
+						completeUnimported = true,
+						semanticHighlighting = true,
+						clangdFileStatus = true,
+					},
+					capabilities = {
+						offsetEncoding = { "utf-16" },
+					},
+					settings = {},
+
+				},
 			}
 		},
 
@@ -59,6 +73,16 @@ return {
 				lspconfig[server].setup(config)
 			end
 		end
-	}
+	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		lazy = true,
 
+		config = function()
+			require("lsp_lines").setup()
+			-- 禁用默认的虚拟文本
+			vim.diagnostic.config({ virtual_text = false })
+			vim.diagnostic.config({ virtual_lines = true })
+		end,
+	},
 }

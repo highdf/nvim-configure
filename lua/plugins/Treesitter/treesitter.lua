@@ -15,6 +15,7 @@ return {
 					"markdown",
 					"markdown_inline",
 					"bash",
+					"regex",
 				},
 				-- 启用高亮功能
 				highlight = {
