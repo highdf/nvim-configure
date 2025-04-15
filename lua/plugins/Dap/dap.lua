@@ -1,42 +1,34 @@
 return {
-	-- {
-	-- 	"mfussenegger/nvim-dap",
-	-- 	dependencies = {
-	-- 		"rcarriga/nvim-dap-ui",
-	-- 		"theHamsta/nvim-dap-virtual-text",
-	-- 	},
-	--
-	-- 	ft = {"c","cpp"},
-	--
-	-- 	-- stylua: ignore
-	-- 	keys = {
-	-- 		{ "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
-	-- 		{ "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
-	-- 		{ "<leader>dc", function() require("dap").continue() end, desc = "Run/Continue" },
-	-- 		{ "<leader>da", function() require("dap").continue({ before = get_args }) end, desc = "Run with Args" },
-	-- 		{ "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
-	-- 		{ "<leader>dg", function() require("dap").goto_() end, desc = "Go to Line (No Execute)" },
-	-- 		{ "<leader>di", function() require("dap").step_into() end, desc = "Step Into" },
-	-- 		{ "<leader>dj", function() require("dap").down() end, desc = "Down" },
-	-- 		{ "<leader>dk", function() require("dap").up() end, desc = "Up" },
-	-- 		{ "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
-	-- 		{ "<leader>do", function() require("dap").step_out() end, desc = "Step Out" },
-	-- 		{ "<leader>dO", function() require("dap").step_over() end, desc = "Step Over" },
-	-- 		{ "<leader>dP", function() require("dap").pause() end, desc = "Pause" },
-	-- 		{ "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
-	-- 		{ "<leader>ds", function() require("dap").session() end, desc = "Session" },
-	-- 		{ "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
-	-- 		{ "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
-	-- 	},
-	--
-	-- 	config = function()
-	-- 		vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-	--
-	-- 		local vscode = require("dap.ext.vscode")
-	-- 		local json = require("plenary.json")
-	-- 		vscode.json_decode = function(str)
-	-- 			return vim.json.decode(json.json_strip_comments(str))
-	-- 		end
-	-- 	end,
-	-- }
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
+		},
+
+		keys = {
+			{ "<A-d>B", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "设置条件断点" },
+			{ "<A-d>b", function() require("dap").toggle_breakpoint() end, desc = "切换断点" },
+			{ "<A-d>c", function() require("dap").continue() end, desc = "运行/继续" },
+			{ "<A-d>a", function() require("dap").continue({ before = get_args }) end, desc = "带参数运行" },
+			{ "<A-d>C", function() require("dap").run_to_cursor() end, desc = "运行到光标处" },
+			{ "<A-d>g", function() require("dap").goto_() end, desc = "跳转到行(不执行)" },
+			{ "<A-d>i", function() require("dap").step_into() end, desc = "步入" },
+			{ "<A-d>j", function() require("dap").down() end, desc = "向下移动调用栈" },
+			{ "<A-d>k", function() require("dap").up() end, desc = "向上移动调用栈" },
+			{ "<A-d>l", function() require("dap").run_last() end, desc = "重新运行上次调试" },
+			{ "<A-d>o", function() require("dap").step_out() end, desc = "步出" },
+			{ "<A-d>O", function() require("dap").step_over() end, desc = "步过" },
+			{ "<A-d>P", function() require("dap").pause() end, desc = "暂停" },
+			{ "<A-d>r", function() require("dap").repl.toggle() end, desc = "切换REPL控制台" },
+			{ "<A-d>s", function() require("dap").session() end, desc = "查看调试会话" },
+			{ "<A-d>t", function() require("dap").terminate() end, desc = "终止调试" },
+			{ "<A-d>w", function() require("dap.ui.widgets").hover() end, desc = "显示调试信息" }
+		},
+
+		config = function()
+			require("dap.c")
+			require("dap.java")
+		end,
+	}
 }
