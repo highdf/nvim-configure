@@ -1,61 +1,51 @@
 return {
-	{
+	{  -- 多功能集成插件集 (UI增强/工具集成/LSP导航)
 		"folke/snacks.nvim",
-		priority = 1000,
-		lazy = false,
+		priority = 1000,    -- 高优先级加载
+		lazy = false,       -- 启动时立即加载
 
-		opts = {
-			input = {
-				enabled = true,
-			},
-			indent = { 		-- 提供缩进线
-				enabled = true,
-				-- dashboard = { example = "github" }
-			},
-			notifier = {	-- 提供通知浮窗
-				enabled = true,
-			},
-			scroll = {		-- 实现丝滑的滚动动画 
-				enabled = true,
-				-- dashboard = { example = "github" }
-			},
-			bufdelete = {	-- 让删除缓存区不破坏窗口布局 
-				enabled = true,
-				-- dashboard = { example = "github" }
-			},
-			lazygit = {		-- lazygit 的集成
-				enabled = true,
-				-- dashboard = { example = "github" }
-			},
-			picker = {		-- picker 的集成
-				enabled = true,
-				-- dashboard = { example = "github" }
-			},
-			image = {		-- image 的集成
-				enabled = true,
-				-- dashboard = { example = "github" }
-			},
+		opts = {            -- 模块化功能配置
+			-- 核心功能
+			input = { enabled = true },    -- 智能输入增强
+
+			-- UI增强组件
+			indent = { enabled = true },   -- 智能缩进参考线
+			notifier = { enabled = true }, -- 通知历史管理系统
+			scroll = { enabled = true },   -- 平滑滚动动画
+
+			-- 工具集成
+			bufdelete = { enabled = true },-- 安全缓冲区删除
+			lazygit = { enabled = true },  -- Git可视化集成
+			image = { enabled = true },    -- 图片预览支持
+
+			-- 导航增强
+			picker = { enabled = true }    -- 模糊搜索系统
 		},
-		keys = {
-			-- notifier 
-			{"<leader>sn",mode = {"n"},function() Snacks.notifier.show_history() end,desc = "show history"},
-			-- bufdelete
-			{"<leader>bd",mode = {"n"},function() Snacks.bufdelete.delete() end,desc = "delet current buffer"},
-			{"<leader>bo",mode = {"n"},function() Snacks.bufdelete.other() end,desc = "delet current buffer"},
-			-- lazygit
-			{"<leader>sl",mode = {"n"},function() Snacks.lazygit.open() end,desc = "open lazygit"},
-			-- picker search
-			{ "<A-s>f", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-			{ "<A-s>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
-			{ "<A-s>g", function() Snacks.picker.grep() end, desc = "Grep" },
-			{ "<A-s>h", function() Snacks.picker.command_history() end, desc = "Command History" },
-			-- picker lsp
-			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-			{ "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-			{ "gl", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-			{ "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-		},
+
+		keys = {  -- 分层快捷键配置
+			-- 通知管理
+			{ "<leader>sn", function() Snacks.notifier.show_history() end, desc = "显示通知历史" },
+
+			-- 缓冲区操作
+			{ "<leader>bd", function() Snacks.bufdelete.delete() end, desc = "安全删除当前缓冲区" },
+			{ "<leader>bo", function() Snacks.bufdelete.other() end, desc = "删除其他缓冲区" },
+
+			-- 版本控制
+			{ "<leader>sl", function() Snacks.lazygit.open() end, desc = "打开Lazygit面板" },
+
+			-- 快速搜索导航
+			{ "<A-s>f", function() Snacks.picker.smart() end, desc = "智能文件搜索" },
+			{ "<A-s>b", function() Snacks.picker.buffers() end, desc = "缓冲区搜索" },
+			{ "<A-s>g", function() Snacks.picker.grep() end, desc = "全文内容搜索" },
+			{ "<A-s>h", function() Snacks.picker.command_history() end, desc = "命令历史搜索" },
+
+			-- LSP智能导航
+			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "跳转定义" },
+			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "跳转声明" },
+			{ "gr", function() Snacks.picker.lsp_references() end, desc = "查看引用", nowait = true },
+			{ "gl", function() Snacks.picker.lsp_implementations() end, desc = "跳转实现" },
+			{ "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "类型定义" }
+		}
 	}
 }
 			-- dim = { 
