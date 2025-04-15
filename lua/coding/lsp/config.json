@@ -1,0 +1,68 @@
+{
+  "ignore": [
+    "jdtls"
+  ],
+  "numbers": 8,
+  "maps": {
+    "typescript.tsx": [
+      "ts_ls"
+    ],
+    "typescriptreact": [
+      "ts_ls"
+    ],
+    "typescript": [
+      "ts_ls"
+    ],
+    "javascript.jsx": [
+      "ts_ls"
+    ],
+    "objcpp": [
+      "clangd"
+    ],
+    "lua": [
+      "lua_ls"
+    ],
+    "javascript": [
+      "ts_ls"
+    ],
+    "objc": [
+      "clangd"
+    ],
+    "bash": [
+      "bashls"
+    ],
+    "templ": [
+      "html"
+    ],
+    "html": [
+      "html"
+    ],
+    "css": [
+      "cssls"
+    ],
+    "c": [
+      "clangd"
+    ],
+    "javascriptreact": [
+      "ts_ls"
+    ],
+    "sh": [
+      "bashls"
+    ],
+    "cpp": [
+      "clangd"
+    ],
+    "python": [
+      "pylsp"
+    ],
+    "scss": [
+      "cssls"
+    ],
+    "cuda": [
+      "clangd"
+    ],
+    "less": [
+      "cssls"
+    ]
+  }
+}

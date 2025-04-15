@@ -1,0 +1,39 @@
+return {
+	-- {
+	-- 	'dawsers/snacks-picker-firefox.nvim',
+	-- 	dependencies = {
+	-- 		'folke/snacks.nvim',
+	-- 		'kkharji/sqlite.lua',
+	-- 	},
+	--
+	-- 	lazy = true,
+	--
+	-- 	keys = {
+	-- 		{"<leader>ff", mode = "n", function() Snacks.picker.firefox_search() end, desc = "open [f]ire[f]ox search" },
+	-- 		{"<leader>fb", mode = "n", function() Snacks.picker.firefox_bookmarks() end, desc = "open [f]irefox [b]ookmark" },
+	-- 		{"<leader>fh", mode = "n", function() Snacks.picker.firefox_history() end, desc = "open [f]irefox history" },
+	-- 	},
+	--
+	-- 	config = function()
+	-- 		local firefox = require('firefox')
+	-- 		-- You need to call setup
+	-- 		firefox.setup({
+	-- 			-- These are the default values, usually correct for Linux.
+	-- 			--
+	-- 			-- For MacOS or Windows, adapt the configuration, search
+	-- 			-- where your Firefox profile is. It is usually in these
+	-- 			-- directories:
+	-- 			--
+	-- 			--    MacOS: "Library/Application Support/Firefox"
+	-- 			--    Windows: "Appdata/Roaming/Mozilla/Firefox"
+	-- 			--
+	-- 			-- The url open command is also different depending on the OS,
+	-- 			-- 'open' (MacOS), 'start firefox' or 'explorer' (Windows)
+	-- 			--
+	-- 			url_open_command = 'xdg-open',
+	-- 			firefox_profile_dir = '~/.mozilla/firefox',
+	-- 			firefox_profile_glob = '*.default*',
+	-- 		})
+	-- 	end
+	-- }
+}
