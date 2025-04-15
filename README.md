@@ -1,81 +1,59 @@
-# neovim配置介绍
+### 🚀 Neovim 环境配置
 
-![empty][neovim-0]
-![empty][neovim-1]
+![Neovim界面预览][neovim-0]
+![插件功能演示][neovim-1]
 
-<!-- vim-markdown-toc GFM -->
+#### 环境准备
+| 组件名称 | 必要性 | 描述 | 下载地址 |
+|----------|--------|------|----------|
+| Neovim Nightly | 必要 | 编辑器本体 | [下载地址](https://github.com/neovim/neovim/releases/tag/nightly) |
+| Nerd Font | 必要 | 图标字体支持 | [字体列表](https://www.nerdfonts.com/font-downloads) |
+| Yazi | 推荐 | 现代化文件管理 | [安装指南](https://yazi-rs.github.io/docs/installation/) |
+| Kitty | 可选 | GPU加速终端 | [下载地址](https://sw.kovidgoyal.net/kitty/binary/#) |
 
-* [准备](#准备)
-* [目录结构](#目录结构)
-* [init.lua](#initlua)
-* [lua](#lua)
-* [config](#config)
-* [plugins](#plugins)
-    * [Blink](#blink)
-    * [Dap](#dap)
-    * [Markdown](#markdown)
-    * [Snacks](#snacks)
-    * [Treesitter](#treesitter)
-    * [Ui](#ui)
-    * [Extras](#extras)
 
-<!-- vim-markdown-toc -->
+# Neovim 插件
 
-## 准备
-- [neovim下载地址](https://github.com/neovim/neovim/releases/tag/nightly)  
-- [yazi下载地址](https://yazi-rs.github.io/docs/installation/)(必要)  
-- [nerdfont字体下载地址](https://www.nerdfonts.com/font-downloads)(必要)   
-- [kitty下载地址](https://sw.kovidgoyal.net/kitty/binary/#)(可选)  
+| 模块          | 插件文件               | 对应插件                          | 核心功能描述             | 插件地址    |
+|---------------|------------------------|-----------------------------------|--------------------------|-------------|
+| **Blink**     | `blink.lua`            | saghen/blink.cmp                 | 增强代码补全             | [blink-cmp] |
+|               | `lspconfig.lua`        | neovim/nvim-lspconfig            | LSP协议配置中心          | [lsp-config]|
+| **Dap**       | `dap.lua`              | mfussenegger/nvim-dap            | 调试协议核心实现         | [nvim-dap]  |
+|               | `dap-ui.lua`           | rcarriga/nvim-dap-ui             | 可视化调试界面           | [dap-ui]    |
+| **Markdown**  | `markdown-preview.lua` | iamcco/markdown-preview.nvim     | 实时预览渲染器           | [md-preview]|
+|               | `vim-markdown-toc.lua` | mzlogin/vim-markdown-toc         | Markdown目录生成器       | [md-toc]    |
+|               | `render-markdown.lua` | MeanderingProgrammer/render-markdown.nvim         | Markdown实时预览       | [render-md]    |
+| **Snacks**    | `snacks.lua`           | folke/snacks.nvim                | 效率增强工作台           | [snacks]    |
+|               | `toggleterm.lua`       | akinsho/toggleterm.nvim          | 浮动终端管理             | [toggleterm]|
+|               | `yazi.lua`             | mikavilpas/yazi.nvim             | 现代化文件管理           | [yazi]      |
+| **Treesitter**| `treesitter.lua`       | nvim-treesitter/nvim-treesitter  | 语法解析引擎             | [treesitter]|
+| **UI**        | `colorscheme.lua`      | catppuccin/nvim                  | 柔光主题套装             | [catppuccin]|
+|               | `lualine.lua`          | nvim-lualine/lualine.nvim        | 动态状态栏               | [lualine]   |
+|               | `tabline.lua`          | kdheepak/tabline.nvim            | 智能标签栏               | [tabline]   |
+|               | `noice.lua`            | folke/noice.nvim                 | 交互式通知系统           | [noice]     |
+| **Extras**    | `flash.lua`            | folke/flash.nvim                 | 快速跳转工具             | [flash]     |
+|               | `im-select.lua`        | h-hg/fcitx.nvim                  | 输入法状态管理           | [fcitx]     |
+|               | `mason.lua`            | williamboman/mason.nvim          | LSP管理器                | [mason]     |
 
-## 目录结构
-- 目录结构可查看`DIRCTORY.md`文件
+[blink-cmp]: https://github.com/saghen/blink.cmp
+[lsp-config]: https://github.com/neovim/nvim-lspconfig
+[nvim-dap]: https://github.com/mfussenegger/nvim-dap
+[dap-ui]: https://github.com/rcarriga/nvim-dap-ui
+[md-preview]: https://github.com/iamcco/markdown-preview.nvim
+[md-toc]: https://github.com/mzlogin/vim-markdown-toc
+[snacks]: https://github.com/folke/snacks.nvim
+[render-md]: https://github.com/MeanderingProgrammer/render-markdown.nvim
+[toggleterm]: https://github.com/akinsho/toggleterm.nvim
+[yazi]: https://github.com/mikavilpas/yazi.nvim
+[treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[catppuccin]: https://github.com/catppuccin/nvim
+[lualine]: https://github.com/nvim-lualine/lualine.nvim
+[tabline]: https://github.com/kdheepak/tabline.nvim
+[noice]: https://github.com/folke/noice.nvim
+[flash]: https://github.com/folke/flash.nvim
+[fcitx]: https://github.com/h-hg/fcitx.nvim
+[mason]: https://github.com/williamboman/mason.nvim
 
-## init.lua
-- init.lua默认作为入口文件
-
-## lua
-- lua作为存放配置`config`与插件`plugins`的根目录
-
-## config
-- `maps.lua`定义了一些快捷键。  
-- `autocmd.lua`定义的一些自动命令。  
-- `basic.lua`定义的关于neovim的基本设置。  
-- `lazy.lua`定义了lazy.nvim插件的行为，更详细的配置信息，请查看`lua/plugins/README.md`。  
-
-## plugins
-- `plugins`用于存放插件
-
-### Blink
-- 核心插件是`blink.cmp`,这是一个代码补全插件。  
-- `lspconfig`和`mason`用于管理配置lsp服务和下载所需语言服务器。
-
-### Dap
-- 核心插件是`dap`，这是一个用于调试代码的插件。  
-- `dap-ui`和`dap-text` 分别用于窗口美化与虚拟文本显示。  
-
-### Markdown
-- `preview-markdwon`用于实时预览`Markdown`文件。  
-- `markdown-toc`提供了插入，更新，删除目录的快捷操作。  
-
-### Snacks
-- `snacks`是核心插件，提供了丰富且高效的功能。  
-- `comment`实现的快捷的各类型文件的注释功能。  
-- `fterm`提供了美观的浮动终端。  
-- `yazi`是一个好用的文件浏览器。  
-- `im-select`可以实现快速切换输入法
-- `nvim-surround`是一个可以插入包裹符号的插件
-
-### Treesitter
-- `Treesitter`提供了各类型文件的语法高亮，增量选择，缩进功能的插件。  
-
-### Ui
-- `colorscheme`提供了一些颜色主体。  
-- `lualine`是一个状态栏梅花插件。  
-- `tabline`用来美化标签栏。  
-- `noice`提供了命令行美化
-
-### Extras
-- 这个目录下，存放了一些额外的插件，若想使用只需取消文件注释即可。  
 
 [neovim-0]: https://raw.githubusercontent.com/highdf/Picture/refs/heads/main/neovim/neovim-0.png
 [neovim-1]: https://raw.githubusercontent.com/highdf/Picture/refs/heads/main/neovim/neovim-1.png

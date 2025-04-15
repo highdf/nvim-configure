@@ -1,4 +1,4 @@
-```help
+```bash
 .
 ├── DIRCTORY.md
 ├── init.lua
@@ -12,31 +12,34 @@
 │   └── plugins
 │       ├── Blink
 │       │   ├── blink.lua
-│       │   ├── lspconfig.lua
-│       │   └── mason.lua
+│       │   └── lspconfig.lua
 │       ├── Dap
 │       │   ├── c.lua
 │       │   ├── dap.lua
 │       │   └── dap-ui.lua
 │       ├── Extras
-│       │   ├── compat.lua
+│       │   ├── blink_compat.lua
 │       │   ├── flash.lua
+│       │   ├── im-select.lua
 │       │   ├── linting.lua
+│       │   ├── mason.lua
 │       │   ├── mini-ai.lua
 │       │   ├── mini-surround.lua
 │       │   └── textobject.lua
-│       ├── Lsp
-│       │   └── lsp_c.lua
+│       ├── Lazy.md
 │       ├── Markdown
-│       │   ├── markdown.lua
-│       │   └── preview.lua
-│       ├── README.md
+│       │   ├── markdown-preview.lua
+│       │   ├── render-markdown.lua
+│       │   └── vim-markdown-toc.lua
 │       ├── Snacks
-│       │   ├── comment.lua
-│       │   ├── fterm.lua
-│       │   ├── im-select.lua
+│       │   ├── colorizer.lua
+│       │   ├── fcitx.lua
 │       │   ├── scacks.lua
 │       │   ├── surroud.lua
+│       │   ├── toggleterm.lua
+│       │   ├── trouble.lua
+│       │   ├── ts-comments.lua
+│       │   ├── vimtex.lua
 │       │   └── yazi.lua
 │       ├── Treesitter
 │       │   └── treesitter.lua
@@ -47,5 +50,5 @@
 │           └── tabline.lua
 └── README.md
 
-12 directories, 35 files
+11 directories, 39 files
 ```
