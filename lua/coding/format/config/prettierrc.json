@@ -1,0 +1,16 @@
+{
+  "tabWidth": 2,
+  "proseWrap": "always",
+  "proseWrap": "always",
+  "semi": false,
+  "overrides": [
+    {
+      "files": "*.yaml",
+      "options": {
+        "tabWidth": 2,
+        "printWidth": 50,
+        "singleQuote": false
+      }
+    }
+  ]
+}
