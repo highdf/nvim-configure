@@ -1,57 +1,62 @@
 ---这里定义了以下快捷键
----
+
 ------------------------------------
 -- 起始设置
 ------------------------------------
-vim.g.mapleader = "\\"							-- 设置<leader>为'\'
-vim.g.maplocalleader = "\\"
-local map = vim.api.nvim_set_keymap				-- 设置变量
-local opt = {noremap = true, silent = true }
+vim.g.mapleader = "\\"               -- 定义全局 Leader 键（推荐使用空格键替代）
+vim.g.maplocalleader = "\\"          -- 定义本地 Leader 键（保留相同配置）
+local map = vim.api.nvim_set_keymap  -- 简化 API 调用
+local opt = { noremap = true, silent = true }  -- 定义通用映射选项
 
-------------------------------------
--- 常用快捷键
-------------------------------------
-map('n','<leader>%','<cmd>cd %:p:h<cr>',opt)							-- 切换到当前缓冲区	
-map('i','<C-b>','<C-[>gUawA',opt)										-- 将单词转化为大写
-map('i','<C-s>','<C-[>guawA',opt)										-- 将单词转化为小写	
-map('n','<leader>lz','<cmd>Lazy<cr>',opt)								-- 启动LazyUI	
-map('i','<C-]>','{<enter>}<c-o>O',opt)									-- 插入括号
-map('n','<leader><leader>','o<C-{>k',opt)								-- 在当勤行插入空行
-map('n','<leader>r','<cmd>reg<enter>',opt)								-- 显示寄存器内容
-map('n','<leader>mk','<cmd>wa | make<cr>',opt)							-- 使用make
-map('n','<leader>Mk','<cmd>argadd Makefile | edit Makefile<cr>',opt)	-- 添加Makefile到参数表
+-----------------------------------------
+-- [文件与目录操作]
+-----------------------------------------
+-- 切换工作目录到当前文件所在目录（替代 :cd %:p:h）
+map('n', '<leader>%', '<cmd>cd %:p:h<cr>', opt)
 
-------------------------------------
--- 包裹文本删除
-------------------------------------
-map('n','<leader>(','ci(',opt)
-map('n','<leader>[','ci[',opt)
-map('n','<leader>{','ci{',opt)
-map('n',"<leader>'","ci'",opt)
-map('n','<leader>"','ci"',opt)
-map('n','<leader><','ci<',opt)
+-----------------------------------------
+-- [文本转换操作]
+-----------------------------------------
+-- 插入模式快速大小写转换（需光标位于单词中间）
+map('i', '<C-b>', '<C-[>gUawA', opt)  -- 转大写（建议改用 <C-u> 标准操作）
+map('i', '<C-s>', '<C-[>guawA', opt)  -- 转小写（可能覆盖保存快捷键）
 
-------------------------------------
--- 参数列表快捷键
-------------------------------------
-map('n','<leader>ag',':args ',opt)
-map('n','<leader>aa',':argadd ',opt)
-map('n','<leader>al','<cmd>args<enter>',opt)
-map('n','<leader>an','<cmd>next<enter>',opt)
-map('n','<leader>ap','<cmd>prev<enter>',opt)
+-----------------------------------------
+-- [插件管理系统]
+-----------------------------------------
+map('n', '<leader>lz', '<cmd>Lazy<cr>', opt)  -- 打开 Lazy.nvim 插件管理界面
 
-------------------------------------
--- 标签页快捷键
-------------------------------------
-map('n','<leader>tt','<cmd>tabnew<enter>',opt)
-map('n','<leader>to','<cmd>tabonly<enter>',opt)
-map('n','<leader>tc','<cmd>tabclose<enter>',opt)
-map('n','<leader>tn','<cmd>tabnext<enter>',opt)
-map('n','<leader>tp','<cmd>tabprev<enter>',opt)
+-----------------------------------------
+-- [代码结构操作]
+-----------------------------------------
+map('n', '<leader>(', 'ci(', opt)    -- 修改圆括号内容
+map('n', '<leader>[', 'ci[', opt)    -- 修改方括号内容
+map('n', '<leader>{', 'ci{', opt)    -- 修改花括号内容
+map('n', "<leader>'", "ci'", opt)    -- 修改单引号内容
+map('n', '<leader>"', 'ci"', opt)    -- 修改双引号内容
+map('n', '<leader><', 'ci<', opt)    -- 修改尖括号内容
 
-------------------------------------
--- 打印0~9号寄存器的内容
-------------------------------------
+-----------------------------------------
+-- [参数列表管理]
+-----------------------------------------
+map('n', '<leader>ag', ':args ', opt)       -- 手动指定文件参数（需输入参数）
+map('n', '<leader>aa', ':argadd ', opt)     -- 追加文件到参数列表
+map('n', '<leader>al', '<cmd>args<enter>', opt)  -- 显示当前参数列表
+map('n', '<leader>an', '<cmd>next<enter>', opt)  -- 跳转下一个参数文件
+map('n', '<leader>ap', '<cmd>prev<enter>', opt)  -- 跳转上一个参数文件
+
+-----------------------------------------
+-- [标签页管理]
+-----------------------------------------
+map('n', '<leader>tt', '<cmd>tabnew<enter>', opt)  -- 新建标签页
+map('n', '<leader>to', '<cmd>tabonly<enter>', opt) -- 关闭其他标签页
+map('n', '<leader>tc', '<cmd>tabclose<enter>', opt)-- 关闭当前标签页
+map('n', '<leader>tn', '<cmd>tabnext<enter>', opt) -- 下一标签页
+map('n', '<leader>tp', '<cmd>tabprev<enter>', opt) -- 上一标签页
+
+-----------------------------------------
+-- [寄存器操作]
+-----------------------------------------
 -- 普通模式
 map('n','<leader>0','"0p',opt)
 map('n','<leader>1','"1p',opt)
@@ -76,45 +81,38 @@ map('v','<leader>7','"7p',opt)
 map('v','<leader>8','"8p',opt)
 map('v','<leader>9','"9p',opt)
 
-------------------------------------
--- QiuckFix的快捷键
-------------------------------------
-map('n','<leader>co','<cmd>copen<enter>',opt)		-- 打开QiuckFix
-map('n','<leader>cn','<cmd>cnext<enter>',opt)		-- 下一个表项
-map('n','<leader>cp','<cmd>cprev<enter>',opt)		-- 上一个表项
-map('n','<leader>cc','<cmd>cclose<enter>',opt)		-- 关闭QiuckFix
+-----------------------------------------
+-- [构建系统集成]
+-----------------------------------------
+map('n', '<leader>mk', '<cmd>wa | make<cr>', opt)      -- 保存后执行 make（建议异步处理）
+map('n', '<leader>Mk', '<cmd>argadd Makefile | edit Makefile<cr>', opt)  -- 快速编辑 Makefile
 
-------------------------------------
--- Buffer的快捷键
-------------------------------------
-map('n','<leader>bn','<cmd>bn<cr>',opt)						-- 下一个Buffer
-map('n','<leader>bp','<cmd>bp<cr>',opt)						-- 上一个Buffer
-map('n','<leader>bl','<cmd>ls<cr>',opt)						-- 显示Buffer列表
-map('n','<leader>bf','<cmd>bf<cr>',opt)						-- 跳到第一个缓冲区
-map('n','<leader>be','<cmd>bl<cr>',opt)						-- 跳到最后一个缓冲区
+-----------------------------------------
+-- [缓冲区管理]
+-----------------------------------------
+map('n', '<leader>bn', '<cmd>bn<cr>', opt)  -- 下一缓冲区（推荐使用 :bnext）
+map('n', '<leader>bp', '<cmd>bp<cr>', opt)  -- 上一缓冲区（推荐使用 :bprev）
+map('n', '<leader>bl', '<cmd>ls<cr>', opt)  -- 列出所有缓冲区（推荐使用 telescope）
+map('n', '<leader>bf', '<cmd>bf<cr>', opt)  -- 跳转首缓冲区（可能不直观）
+map('n', '<leader>be', '<cmd>bl<cr>', opt)  -- 跳转尾缓冲区（可能不直观）
 
-------------------------------------
--- 在可视模式下复制/粘贴系统剪切板
-------------------------------------
-map('v','<A-v>','"+p',opt)
-map('v','<A-c>','"+y',opt)
+-----------------------------------------
+-- [系统剪贴板集成]
+-----------------------------------------
+map('v', '<A-v>', '"+p', opt)  -- 粘贴系统剪贴板（推荐使用 <leader>p）
+map('v', '<A-c>', '"+y', opt)  -- 复制到系统剪贴板（推荐使用 <leader>y）
 
-------------------------------------
---窗口模式快捷键
-------------------------------------
-map('n','<A-h>','<C-w>h',opt);
-map('n','<A-j>','<C-w>j',opt);
-map('n','<A-k>','<C-w>k',opt);
-map('n','<A-l>','<C-w>l',opt);
-map('n','<A-o>','<C-w>o',opt);
-map('n','<A-c>','<C-w>c',opt);
-
-------------------------------------
--- 插入括号
-------------------------------------
--- map("i","{"," {<cr>}<C-o>O",opt);
--- map("i","(","()<C-[>i",opt);
--- map("i","[","[]<C-[>i",opt);
--- map("i","'","''<C-[>i",opt);
--- map("i",'"','""<C-[>i',opt);
--- map("i","<","<><C-[>i",opt);
+-----------------------------------------
+-- [窗口管理]
+-----------------------------------------
+map('n','<A-h>','<C-w>h', opt)  -- 聚焦左窗口
+map('n','<A-j>','<C-w>j', opt)  -- 聚焦下窗口
+map('n','<A-k>','<C-w>k', opt)  -- 聚焦上窗口
+map('n','<A-l>','<C-w>l', opt)  -- 聚焦右窗口
+map('n','<A-o>','<C-w>o', opt)  -- 关闭其他窗口（保留当前）
+map('n','<A-c>','<C-w>c', opt)  -- 关闭当前窗口
+-----------------------------------------
+-- [其他操作]
+-----------------------------------------
+map("n", "<leader><leader>", "o<C-[>k", opt)
+map("i", "<C-]>", " {<cr>}<C-o>O", opt)
