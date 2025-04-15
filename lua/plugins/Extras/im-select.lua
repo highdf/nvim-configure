@@ -7,7 +7,7 @@ return {
 	-- 	config = function()
 	-- 		require('im_select').setup({
 	-- 			-- -- IBus 英文输入法标识符 (通过终端执行 `ibus list-engine` 确认)
-	-- 			default_im_select = "xkb:us::eng", 
+	-- 			-- default_im_select = "xkb:us::eng", 
 	-- 			--
 	-- 			-- -- 事件触发配置
 	-- 			-- set_default_events = {
