@@ -1,120 +1,347 @@
----这里定义了以下快捷键
----
+--- 这里定义了以下快捷键
+
 ------------------------------------
 -- 起始设置
 ------------------------------------
-vim.g.mapleader = "\\"							-- 设置<leader>为'\'
-vim.g.maplocalleader = "\\"
-local map = vim.api.nvim_set_keymap				-- 设置变量
-local opt = {noremap = true, silent = true }
+vim.g.mapleader = "\\" -- 定义全局 Leader 键
+vim.g.maplocalleader = "\\" -- 定义本地 Leader 键
+local map = vim.keymap.set -- 使用支持 desc 的新 API
+local opt = { noremap = true, silent = true } -- 基础选项
 
-------------------------------------
--- 常用快捷键
-------------------------------------
-map('n','<leader>%','<cmd>cd %:p:h<cr>',opt)							-- 切换到当前缓冲区	
-map('i','<C-b>','<C-[>gUawA',opt)										-- 将单词转化为大写
-map('i','<C-s>','<C-[>guawA',opt)										-- 将单词转化为小写	
-map('n','<leader>lz','<cmd>Lazy<cr>',opt)								-- 启动LazyUI	
-map('i','<C-]>','{<enter>}<c-o>O',opt)									-- 插入括号
-map('n','<leader><leader>','o<C-{>k',opt)								-- 在当勤行插入空行
-map('n','<leader>r','<cmd>reg<enter>',opt)								-- 显示寄存器内容
-map('n','<leader>mk','<cmd>wa | make<cr>',opt)							-- 使用make
-map('n','<leader>Mk','<cmd>argadd Makefile | edit Makefile<cr>',opt)	-- 添加Makefile到参数表
+-----------------------------------------
+-- [文件与目录操作]
+-----------------------------------------
+map (
+  "n",
+  "<leader>%",
+  "<cmd>cd %:p:h<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Switch to current file's directory as working directory",
+  })
+)
 
-------------------------------------
--- 包裹文本删除
-------------------------------------
-map('n','<leader>(','ci(',opt)
-map('n','<leader>[','ci[',opt)
-map('n','<leader>{','ci{',opt)
-map('n',"<leader>'","ci'",opt)
-map('n','<leader>"','ci"',opt)
-map('n','<leader><','ci<',opt)
+-----------------------------------------
+-- [文本转换操作]
+-----------------------------------------
+map (
+  "i",
+  "<C-b>",
+  "<C-[>gUawA",
+  vim.tbl_extend ("force", opt, {
+    desc = "Convert current word to uppercase",
+  })
+)
+map (
+  "i",
+  "<C-s>",
+  "<C-[>guawA",
+  vim.tbl_extend ("force", opt, {
+    desc = "Convert current word to lowercase",
+  })
+)
 
-------------------------------------
--- 参数列表快捷键
-------------------------------------
-map('n','<leader>ag',':args ',opt)
-map('n','<leader>aa',':argadd ',opt)
-map('n','<leader>al','<cmd>args<enter>',opt)
-map('n','<leader>an','<cmd>next<enter>',opt)
-map('n','<leader>ap','<cmd>prev<enter>',opt)
+-----------------------------------------
+-- [插件管理系统]
+-----------------------------------------
+map (
+  "n",
+  "<leader>lz",
+  "<cmd>Lazy<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Open lazy.nvim plugin manager",
+  })
+)
 
-------------------------------------
--- 标签页快捷键
-------------------------------------
-map('n','<leader>tt','<cmd>tabnew<enter>',opt)
-map('n','<leader>to','<cmd>tabonly<enter>',opt)
-map('n','<leader>tc','<cmd>tabclose<enter>',opt)
-map('n','<leader>tn','<cmd>tabnext<enter>',opt)
-map('n','<leader>tp','<cmd>tabprev<enter>',opt)
+-----------------------------------------
+-- [代码结构操作]
+-----------------------------------------
+local change_inside = function (key, description)
+  map (
+    "n",
+    "<leader>" .. key,
+    "ci" .. key,
+    vim.tbl_extend ("force", opt, {
+      desc = "Change inside " .. description,
+    })
+  )
+end
 
-------------------------------------
--- 打印0~9号寄存器的内容
-------------------------------------
--- 普通模式
-map('n','<leader>0','"0p',opt)
-map('n','<leader>1','"1p',opt)
-map('n','<leader>2','"2p',opt)
-map('n','<leader>3','"3p',opt)
-map('n','<leader>4','"4p',opt)
-map('n','<leader>5','"5p',opt)
-map('n','<leader>6','"6p',opt)
-map('n','<leader>7','"7p',opt)
-map('n','<leader>8','"8p',opt)
-map('n','<leader>9','"9p',opt)
-map('n','<leader>+','o<C-[>"+p',opt)
--- 可视模式
-map('v','<leader>0','"0p',opt)
-map('v','<leader>1','"1p',opt)
-map('v','<leader>2','"2p',opt)
-map('v','<leader>3','"3p',opt)
-map('v','<leader>4','"4p',opt)
-map('v','<leader>5','"5p',opt)
-map('v','<leader>6','"6p',opt)
-map('v','<leader>7','"7p',opt)
-map('v','<leader>8','"8p',opt)
-map('v','<leader>9','"9p',opt)
+change_inside ("(", "parentheses")
+change_inside ("[", "square brackets")
+change_inside ("{", "curly braces")
+change_inside ("'", "single quotes")
+change_inside ('"', "double quotes")
+change_inside ("<", "angle brackets")
 
-------------------------------------
--- QiuckFix的快捷键
-------------------------------------
-map('n','<leader>co','<cmd>copen<enter>',opt)		-- 打开QiuckFix
-map('n','<leader>cn','<cmd>cnext<enter>',opt)		-- 下一个表项
-map('n','<leader>cp','<cmd>cprev<enter>',opt)		-- 上一个表项
-map('n','<leader>cc','<cmd>cclose<enter>',opt)		-- 关闭QiuckFix
+-----------------------------------------
+-- [标签页管理]
+-----------------------------------------
+map (
+  "n",
+  "<leader>tt",
+  "<cmd>tabnew<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Create new tab",
+  })
+)
+map (
+  "n",
+  "<leader>to",
+  "<cmd>tabonly<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Close all tabs except current",
+  })
+)
+map (
+  "n",
+  "<leader>tc",
+  "<cmd>tabclose<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Close current tab",
+  })
+)
+map (
+  "n",
+  "<leader>tn",
+  "<cmd>tabnext<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Switch to next tab",
+  })
+)
+map (
+  "n",
+  "<leader>tp",
+  "<cmd>tabprev<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Switch to previous tab",
+  })
+)
 
-------------------------------------
--- Buffer的快捷键
-------------------------------------
-map('n','<leader>bn','<cmd>bn<cr>',opt)						-- 下一个Buffer
-map('n','<leader>bp','<cmd>bp<cr>',opt)						-- 上一个Buffer
-map('n','<leader>bl','<cmd>ls<cr>',opt)						-- 显示Buffer列表
-map('n','<leader>bf','<cmd>bf<cr>',opt)						-- 跳到第一个缓冲区
-map('n','<leader>be','<cmd>bl<cr>',opt)						-- 跳到最后一个缓冲区
+-----------------------------------------
+-- [寄存器操作]
+-----------------------------------------
+-- 普通模式寄存器粘贴
+local reg_map_normal = function (num)
+  map (
+    "n",
+    "<leader>" .. num,
+    '"' .. num .. "p",
+    vim.tbl_extend ("force", opt, {
+      desc = "Paste content from register " .. num,
+    })
+  )
+end
 
-------------------------------------
--- 在可视模式下复制/粘贴系统剪切板
-------------------------------------
-map('v','<A-v>','"+p',opt)
-map('v','<A-c>','"+y',opt)
+-- 可视模式寄存器粘贴
+local reg_map_visual = function (num)
+  map (
+    "v",
+    "<leader>" .. num,
+    '"' .. num .. "p",
+    vim.tbl_extend ("force", opt, {
+      desc = "Replace selection with content from register " .. num,
+    })
+  )
+end
 
-------------------------------------
---窗口模式快捷键
-------------------------------------
-map('n','<A-h>','<C-w>h',opt);
-map('n','<A-j>','<C-w>j',opt);
-map('n','<A-k>','<C-w>k',opt);
-map('n','<A-l>','<C-w>l',opt);
-map('n','<A-o>','<C-w>o',opt);
-map('n','<A-c>','<C-w>c',opt);
+-- 创建寄存器映射（0-9）
+for i = 0, 9 do
+  reg_map_normal (tostring (i))
+  reg_map_visual (tostring (i))
+end
 
-------------------------------------
--- 插入括号
-------------------------------------
--- map("i","{"," {<cr>}<C-o>O",opt);
--- map("i","(","()<C-[>i",opt);
--- map("i","[","[]<C-[>i",opt);
--- map("i","'","''<C-[>i",opt);
--- map("i",'"','""<C-[>i',opt);
--- map("i","<","<><C-[>i",opt);
+-- 特殊粘贴操作
+map (
+  "n",
+  "<leader>+",
+  'o<Esc>"+p',
+  vim.tbl_extend ("force", opt, {
+    desc = "Create new line and paste from system clipboard",
+  })
+)
+
+-----------------------------------------
+-- [构建系统集成]
+-----------------------------------------
+map (
+  "n",
+  "<leader>mk",
+  "<cmd>wa | make<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Save all files and execute make command",
+  })
+)
+map (
+  "n",
+  "<leader>Mk",
+  "<cmd>argadd Makefile | edit Makefile<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Add and edit Makefile",
+  })
+)
+
+-----------------------------------------
+-- [缓冲区管理]
+-----------------------------------------
+map (
+  "n",
+  "<leader>bn",
+  "<cmd>bn<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Switch to next buffer",
+  })
+)
+map (
+  "n",
+  "<leader>bp",
+  "<cmd>bp<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Switch to previous buffer",
+  })
+)
+map (
+  "n",
+  "<leader>bl",
+  "<cmd>ls<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "List all buffers",
+  })
+)
+map (
+  "n",
+  "<leader>bf",
+  "<cmd>bf<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Switch to first buffer",
+  })
+)
+map (
+  "n",
+  "<leader>be",
+  "<cmd>bl<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Switch to last buffer",
+  })
+)
+
+-----------------------------------------
+-- [系统剪贴板集成]
+-----------------------------------------
+map (
+  "v",
+  "<A-v>",
+  '"+p',
+  vim.tbl_extend ("force", opt, {
+    desc = "Paste from system clipboard to selection",
+  })
+)
+map (
+  "v",
+  "<A-c>",
+  '"+y',
+  vim.tbl_extend ("force", opt, {
+    desc = "Copy selection to system clipboard",
+  })
+)
+
+-----------------------------------------
+-- [窗口管理]
+-----------------------------------------
+map (
+  "n",
+  "<A-h>",
+  "<C-w>h",
+  vim.tbl_extend ("force", opt, {
+    desc = "Focus left window",
+  })
+)
+map (
+  "n",
+  "<A-j>",
+  "<C-w>j",
+  vim.tbl_extend ("force", opt, {
+    desc = "Focus bottom window",
+  })
+)
+map (
+  "n",
+  "<A-k>",
+  "<C-w>k",
+  vim.tbl_extend ("force", opt, {
+    desc = "Focus top window",
+  })
+)
+map (
+  "n",
+  "<A-l>",
+  "<C-w>l",
+  vim.tbl_extend ("force", opt, {
+    desc = "Focus right window",
+  })
+)
+map (
+  "n",
+  "<A-o>",
+  "<C-w>o",
+  vim.tbl_extend ("force", opt, {
+    desc = "Close other windows (keep only current)",
+  })
+)
+map (
+  "n",
+  "<A-c>",
+  "<C-w>c",
+  vim.tbl_extend ("force", opt, {
+    desc = "Close current window",
+  })
+)
+
+-----------------------------------------
+-- [Lsp操作]
+-----------------------------------------
+map (
+  { "n", "v" },
+  "<leader>la",
+  "<cmd>lua vim.lsp.buf.code_action()<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Show LSP code actions at cursor position",
+  })
+)
+
+-----------------------------------------
+-- [其他操作]
+-----------------------------------------
+map (
+  "n",
+  "<leader>gy",
+  "<cmd>%y +<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Yank entire buffer to system clipboard",
+  })
+)
+map (
+  "n",
+  "<leader>gp",
+  "<cmd>%d _ |put! +<cr>",
+  vim.tbl_extend ("force", opt, {
+    desc = "Replace entire buffer with system clipboard content",
+  })
+)
+
+map (
+  "i",
+  "<C-l>",
+  "<C-o>zt",
+  vim.tbl_extend ("force", opt, {
+    desc = "Clear screen (recenter cursor)",
+  })
+)
+
+map (
+  "n",
+  "<leader><leader>",
+  "o<C-[>k",
+  vim.tbl_extend ("force", opt, {
+    desc = "Insert a empty line on next line",
+  })
+)
