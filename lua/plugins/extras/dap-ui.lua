@@ -1,0 +1,66 @@
+return {
+  -- {
+  --   "rcarriga/nvim-dap-ui",
+  --   lazy = true,
+  --
+  --   dependencies = {
+  --     "mfussenegger/nvim-dap",
+  --     "nvim-neotest/nvim-nio",
+  --   },
+  --
+  --   keys = {
+  --     {
+  --       "<A-d>e",
+  --       mode = "n",
+  --       "<cmd>lua require('dapui').toggle()<cr>",
+  --       desc = "Open dap-ui window",
+  --     },
+  --     {
+  --       "<A-d>w",
+  --       mode = { "n", "v" },
+  --       ":lua require('dapui').eval()<cr>",
+  --       desc = "open dap-ui eval()",
+  --     },
+  --   },
+  --
+  --   opts = {
+  --     layouts = {
+  --       {
+  --         elements = {
+  --           { id = "scopes", size = 0.25 },
+  --           { id = "stacks", size = 0.25 },
+  --           { id = "breakpoints", size = 0.25 },
+  --           { id = "watches", size = 0.25 },
+  --         },
+  --         position = "left",
+  --         size = 38,
+  --       },
+  --       {
+  --         elements = {
+  --           { id = "console", size = 0.5 },
+  --           { id = "repl", size = 0.5 },
+  --         },
+  --         position = "bottom",
+  --         size = 13,
+  --       },
+  --     },
+  --   },
+  -- },
+  --
+  -- {
+  --   "theHamsta/nvim-dap-virtual-text",
+  --   lazy = true,
+  --
+  --   dependencies = {
+  --     "mfussenegger/nvim-dap",
+  --   },
+  --
+  --   opts = {
+  --     enabled = true,
+  --     highlight_changed_variables = true,
+  --     show_stop_reason = true,
+  --     commented = false,
+  --     virt_text_pos = "eol",
+  --   },
+  -- },
+}

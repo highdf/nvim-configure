@@ -1,81 +1,20 @@
-# neovim配置介绍
 
-![empty][neovim-0]
-![empty][neovim-1]
+### 🚀 Neovim 配置
 
-<!-- vim-markdown-toc GFM -->
+![image_0][neovim-0]
+![image_1][neovim-1]
+![image_2][neovim-2]
+![image_3][neovim-3]
+#### 安装
+在shell中执行以下命令
+```bash
+if [[ -e "${HOME}/.config/nvim" ]]; then
+    rm -rf "${HOME}/.config/nvim"
+fi
+git https://github.com/highdf/nvim-configure.git "${HOME}/.config/nvim"
+```
 
-* [准备](#准备)
-* [目录结构](#目录结构)
-* [init.lua](#initlua)
-* [lua](#lua)
-* [config](#config)
-* [plugins](#plugins)
-    * [Blink](#blink)
-    * [Dap](#dap)
-    * [Markdown](#markdown)
-    * [Snacks](#snacks)
-    * [Treesitter](#treesitter)
-    * [Ui](#ui)
-    * [Extras](#extras)
-
-<!-- vim-markdown-toc -->
-
-## 准备
-- [neovim下载地址](https://github.com/neovim/neovim/releases/tag/nightly)  
-- [yazi下载地址](https://yazi-rs.github.io/docs/installation/)(必要)  
-- [nerdfont字体下载地址](https://www.nerdfonts.com/font-downloads)(必要)   
-- [kitty下载地址](https://sw.kovidgoyal.net/kitty/binary/#)(可选)  
-
-## 目录结构
-- 目录结构可查看`DIRCTORY.md`文件
-
-## init.lua
-- init.lua默认作为入口文件
-
-## lua
-- lua作为存放配置`config`与插件`plugins`的根目录
-
-## config
-- `maps.lua`定义了一些快捷键。  
-- `autocmd.lua`定义的一些自动命令。  
-- `basic.lua`定义的关于neovim的基本设置。  
-- `lazy.lua`定义了lazy.nvim插件的行为，更详细的配置信息，请查看`lua/plugins/README.md`。  
-
-## plugins
-- `plugins`用于存放插件
-
-### Blink
-- 核心插件是`blink.cmp`,这是一个代码补全插件。  
-- `lspconfig`和`mason`用于管理配置lsp服务和下载所需语言服务器。
-
-### Dap
-- 核心插件是`dap`，这是一个用于调试代码的插件。  
-- `dap-ui`和`dap-text` 分别用于窗口美化与虚拟文本显示。  
-
-### Markdown
-- `preview-markdwon`用于实时预览`Markdown`文件。  
-- `markdown-toc`提供了插入，更新，删除目录的快捷操作。  
-
-### Snacks
-- `snacks`是核心插件，提供了丰富且高效的功能。  
-- `comment`实现的快捷的各类型文件的注释功能。  
-- `fterm`提供了美观的浮动终端。  
-- `yazi`是一个好用的文件浏览器。  
-- `im-select`可以实现快速切换输入法
-- `nvim-surround`是一个可以插入包裹符号的插件
-
-### Treesitter
-- `Treesitter`提供了各类型文件的语法高亮，增量选择，缩进功能的插件。  
-
-### Ui
-- `colorscheme`提供了一些颜色主体。  
-- `lualine`是一个状态栏梅花插件。  
-- `tabline`用来美化标签栏。  
-- `noice`提供了命令行美化
-
-### Extras
-- 这个目录下，存放了一些额外的插件，若想使用只需取消文件注释即可。  
-
-[neovim-0]: https://raw.githubusercontent.com/highdf/Picture/refs/heads/main/neovim/neovim-0.png
-[neovim-1]: https://raw.githubusercontent.com/highdf/Picture/refs/heads/main/neovim/neovim-1.png
+[neovim-0]: https://private-user-images.githubusercontent.com/144128871/523968676-8559ffb0-38d9-49e2-86d2-34144b694f0c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUyMjk2OTMsIm5iZiI6MTc2NTIyOTM5MywicGF0aCI6Ii8xNDQxMjg4NzEvNTIzOTY4Njc2LTg1NTlmZmIwLTM4ZDktNDllMi04NmQyLTM0MTQ0YjY5NGYwYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwOFQyMTI5NTNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01OTEyYTg5Y2YxNWM4MWZiMmI2NGE2YjZjNzA2NGQzZTBlOWEzNjM1MDRhNmE5MjEyMGRiY2VjNTU0YzdlNDcyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.rT_npAgGF_DmsNWReiGX6KvL9JTwt17JtO0jnMcPbf4
+[neovim-1]: https://private-user-images.githubusercontent.com/144128871/523969143-acb4ca11-d674-4b8c-9bca-6afafda9adf3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUyMjk3NzQsIm5iZiI6MTc2NTIyOTQ3NCwicGF0aCI6Ii8xNDQxMjg4NzEvNTIzOTY5MTQzLWFjYjRjYTExLWQ2NzQtNGI4Yy05YmNhLTZhZmFmZGE5YWRmMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwOFQyMTMxMTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01OTkwYzEzZjg4MGNmMGY2YzdhOGEyNTY1MDZjNDI3ZDM1ZWRkMWNiYzE1ZGNkNzQwMTJhYjVlNTZjOTFjOGQwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.9IOFFvhadXWq5T66u2Ps4duvEKsMW5DSDI8QykG5hlM
+[neovim-2]: https://private-user-images.githubusercontent.com/144128871/523969429-f0af589d-19ce-4cf1-a34c-0a90d9e321d4.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUyMjk4NjQsIm5iZiI6MTc2NTIyOTU2NCwicGF0aCI6Ii8xNDQxMjg4NzEvNTIzOTY5NDI5LWYwYWY1ODlkLTE5Y2UtNGNmMS1hMzRjLTBhOTBkOWUzMjFkNC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwOFQyMTMyNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iZWRhODdlN2NmY2VkNTEwY2JmYWI4NmUxNzViOGNkNzllZjBiNGQ4YjdiNzA1Yzc4MmMxOGFjOWQzZTBjM2I3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.wosrjkmZoiqquQDwGN07bD2nW6Sp4kTnm_n0bVhSzTs
+[neovim-3]: https://private-user-images.githubusercontent.com/144128871/523969573-c2d10ce1-8ae8-4131-b974-3fd36b0c5c5c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjUyMjk4NjQsIm5iZiI6MTc2NTIyOTU2NCwicGF0aCI6Ii8xNDQxMjg4NzEvNTIzOTY5NTczLWMyZDEwY2UxLThhZTgtNDEzMS1iOTc0LTNmZDM2YjBjNWM1Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMjA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTIwOFQyMTMyNDRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03NzQ3MmJiZmE3NjU2MjljYmRhOWQ4NzA3ODkwODAzMTJkNjhhNzA2YzEyZGM0ZTg2YzQxZDQ4MDdiM2Q0ODg1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.kp39lieWE-bqOanYGcFfHNfNRby7UsD8RXTHq_jpDeY
