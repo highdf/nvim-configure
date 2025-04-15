@@ -1,33 +1,49 @@
 -- 这里定义自动命令
 
--- 定时切换主题
-local hour = tonumber(vim.fn.strftime("%H"))
+local auto_cmd = {}
 
--- tokyonight
--- if hour >= 6 and hour < 17 then
--- 	vim.cmd([[colorscheme tokyonight-day]])		-- light主题
--- 	-- options = { theme = 'tokyonight-day' }
--- else
--- 	vim.cmd([[colorscheme tokyonight-moon]])	-- dark主题
--- 	-- options = { theme = 'tokyonight-moon' }
--- end
+function auto_cmd.themes_switch ()
+  local hour = tonumber (vim.fn.strftime ("%H"))
 
--- catppuccin
-if hour >= 6 and hour < 17 then
-	vim.cmd([[colorscheme catppuccin-latte]])	-- light主题
-	options = { theme = 'catppuccin-latte' }
-else
-	vim.cmd([[colorscheme catppuccin-mocha]])	-- dark主题
-	options = { theme = 'catppuccin-mocha' }
-end
+  local themes = {
+    {
+      light = "tokyonight-day",
+      dark = "tokyonight-moon",
+    },
+    {
+      light = "catppuccin-latte",
+      dark = "catppuccin-mocha",
+    },
+    {
+      light = "catppuccin-latte",
+      dark = "oxocarbon",
+    },
+    {
+      light = "onelight",
+      dark = "onedark_vivid",
+    },
+  }
 
--- 检查启动参数是否为目录
-local function change_to_directory_if_provided()
-  local arg = vim.fn.argv(0)  -- 获取第一个启动参数
-  if arg and vim.fn.isdirectory(arg) == 1 then  -- 检查是否为目录
-    vim.cmd("cd " .. vim.fn.fnameescape(arg))  -- 切换工作目录
+  local day = tonumber (vim.fn.getenv ("DAY_START"))
+  local night = tonumber (vim.fn.getenv ("DAY_END"))
+  local util = require ("utils.table")
+  local table_size = util.get_table_size (themes)
+
+  math.randomseed (os.time ())
+  local random_index = math.random (1, table_size)
+  local theme_switch_cmd = nil
+  local background = nil
+
+  if hour >= day and hour < night then
+    background = "light"
+    theme_switch_cmd = "colorscheme " .. themes[random_index].light
+  else
+    background = "dark"
+    theme_switch_cmd = "colorscheme " .. themes[random_index].dark
   end
+
+  vim.o.background = background
+  vim.cmd (theme_switch_cmd)
 end
 
--- 在启动时调用函数
-change_to_directory_if_provided()
+auto_cmd.themes_switch ()

@@ -1,0 +1,31 @@
+return {
+  -- {
+  --   "L3MON4D3/LuaSnip",
+  --   version = "v2.*",
+  --   build = "make install_jsregexp",
+  --   lazy = true,
+  --
+  --   opts = function ()
+  --     local loader = require ("luasnip.loaders.from_lua")
+  --     local luasnip = require ("luasnip")
+  --     local snacks_picker = require ("snacks.picker")
+  --     local path = vim.fn.stdpath ("config") .. "/lua/snippets"
+  --     local config = {}
+  --
+  --     vim.keymap.set ({ "s", "i" }, "<C-s>", function ()
+  --       if luasnip.choice_active () then
+  --         local choices = luasnip.get_current_choices ()
+  --         local index = snacks_picker.select (
+  --           choices,
+  --           { prompt = "select" },
+  --           function (item, index) luasnip.set_choice (index) end
+  --         )
+  --       end
+  --     end)
+  --
+  --     loader.load ({ paths = path })
+  --
+  --     return config
+  --   end,
+  -- },
+}
